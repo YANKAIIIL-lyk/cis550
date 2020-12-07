@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.example.cis550.entity.RiaaAlbumEntity" table="riaaAlbum" schema="project">
+        <composite-id mapped="true" class="com.example.cis550.entity.RiaaAlbumEntityPK">
+            <key-property name="album">
+                <column name="Album" sql-type="varchar(255)"/>
+            </key-property>
+            <key-property name="artist">
+                <column name="Artist" sql-type="varchar(255)"/>
+            </key-property>
+        </composite-id>
+        <property name="status">
+            <column name="Status" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="label">
+            <column name="Label" sql-type="varchar(255)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

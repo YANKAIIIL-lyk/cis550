@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.example.cis550.entity.BB200Entity" table="BB200" schema="project">
+        <composite-id mapped="true" class="com.example.cis550.entity.BB200EntityPK">
+            <key-property name="artists">
+                <column name="Artists" sql-type="varchar(255)"/>
+            </key-property>
+            <key-property name="albumName">
+                <column name="AlbumName" sql-type="varchar(255)"/>
+            </key-property>
+            <key-property name="week">
+                <column name="Week" sql-type="varchar(255)"/>
+            </key-property>
+        </composite-id>
+        <property name="weeklyRank">
+            <column name="WeeklyRank" sql-type="int" not-null="true"/>
+        </property>
+        <property name="peak">
+            <column name="Peak" sql-type="int" not-null="true"/>
+        </property>
+        <property name="weeksChart">
+            <column name="WeeksChart" sql-type="int" not-null="true"/>
+        </property>
+        <property name="date">
+            <column name="Date" sql-type="int" not-null="true"/>
+        </property>
+        <property name="genre">
+            <column name="Genre" sql-type="varchar(255)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

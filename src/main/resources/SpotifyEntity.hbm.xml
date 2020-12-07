@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.example.cis550.entity.SpotifyEntity" table="Spotify" schema="project">
+        <composite-id mapped="true" class="com.example.cis550.entity.SpotifyEntityPK">
+            <key-property name="name">
+                <column name="Name" sql-type="varchar(255)"/>
+            </key-property>
+            <key-property name="artist">
+                <column name="Artist" sql-type="varchar(255)"/>
+            </key-property>
+            <key-property name="week">
+                <column name="Week" sql-type="varchar(255)"/>
+            </key-property>
+        </composite-id>
+        <property name="streams">
+            <column name="Streams" sql-type="int" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

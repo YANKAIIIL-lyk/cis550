@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.example.cis550.entity.ArtistEntity" table="Artist" schema="project">
+        <id name="artist">
+            <column name="Artist" sql-type="varchar(20)" length="20"/>
+        </id>
+        <property name="followers">
+            <column name="Followers" sql-type="int" not-null="true"/>
+        </property>
+        <property name="genres">
+            <column name="Genres" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="numAlbums">
+            <column name="NumAlbums" sql-type="int" not-null="true"/>
+        </property>
+        <property name="yearFirstAblum">
+            <column name="YearFirstAblum" sql-type="int" not-null="true"/>
+        </property>
+        <property name="gender">
+            <column name="Gender" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="groupSolo">
+            <column name="GroupSolo" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://localhost:3306/project</property>
+    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+      <mapping class="com.example.cis550.entity.ArtistEntity"/>
+      <mapping resource="ArtistEntity.hbm.xml"/>
+      <mapping class="com.example.cis550.entity.BB200Entity"/>
+      <mapping resource="BB200Entity.hbm.xml"/>
+      <mapping class="com.example.cis550.entity.GrammyAlbumsEntity"/>
+      <mapping resource="GrammyAlbumsEntity.hbm.xml"/>
+      <mapping class="com.example.cis550.entity.GrammySongsEntity"/>
+      <mapping resource="GrammySongsEntity.hbm.xml"/>
+      <mapping class="com.example.cis550.entity.SpotifyEntity"/>
+      <mapping resource="SpotifyEntity.hbm.xml"/>
+      <mapping class="com.example.cis550.entity.RiaaAlbumEntity"/>
+      <mapping resource="RiaaAlbumEntity.hbm.xml"/>
+      <mapping class="com.example.cis550.entity.RiaaSingleEntity"/>
+      <mapping resource="RiaaSingleEntity.hbm.xml"/>
+      <!-- <property name="connection.username"/> -->
+    <!-- <property name="connection.password"/> -->
+
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>
