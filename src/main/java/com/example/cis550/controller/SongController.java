@@ -2,6 +2,7 @@ package com.example.cis550.controller;
 
 import com.example.cis550.entity.BB200Entity;
 import com.example.cis550.model.Song;
+import com.example.cis550.model.TopGenre;
 import com.example.cis550.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,5 +42,16 @@ public class SongController {
             @RequestParam(value = "endYear") String endYear) {
         List<Song> res = songService.findRange(startYear, endYear);
         return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/top_genre", method = RequestMethod.GET)
+    public ResponseEntity<?> topGenre(
+            @RequestParam(value = "year") int year,
+            @RequestParam(value = "genre") String genre,
+            @RequestParam(value = "orderby", required = false) boolean sort
+    ){
+        List<TopGenre> topgenres = songService.findTopGenre(year, genre, sort);
+        return new ResponseEntity<>(topgenres, HttpStatus.OK);
+
     }
 }
