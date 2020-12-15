@@ -129,9 +129,11 @@ public class SongService {
             String artist = e.getKey();
             String song = e.getValue().getKey();
             int streams = e.getValue().getValue();
-            RecommendView view = RecommendView.builder().artist(artist)
-                    .song(song).streams(streams).build();
-            views.add(view);
+            if(streams > 0){
+                RecommendView view = RecommendView.builder().artist(artist)
+                        .song(song).streams(streams).build();
+                views.add(view);
+            }
         });
         Collections.sort(views, (o1, o2) -> o2.getStreams() - o1.getStreams());
         return views;
