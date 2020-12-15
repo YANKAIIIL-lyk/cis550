@@ -26,21 +26,6 @@ public class SongController {
     @Autowired
     private SongService songService;
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public ResponseEntity<?> test(
-            @RequestParam(value = "startYear") String startYear,
-            @RequestParam(value = "endYear") String endYear) {
-        String list = startYear + " " + endYear;
-        return new ResponseEntity<>(list, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/allGrammy", method = RequestMethod.GET)
-    public ResponseEntity<?> allGrammy() {
-        List<BB200Entity> res = songService.findAllGrammySongs();
-        return new ResponseEntity<>(res, HttpStatus.OK);
-    }
-
-    //Start from here
     @RequestMapping(value = "/range", method = RequestMethod.GET)
     public ResponseEntity<?> range(
             @RequestParam(value = "startYear") String startYear,
