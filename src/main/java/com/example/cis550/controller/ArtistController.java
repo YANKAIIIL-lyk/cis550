@@ -3,6 +3,7 @@ package com.example.cis550.controller;
 import com.example.cis550.model.Artist;
 import com.example.cis550.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,9 @@ public class ArtistController {
     @RequestMapping(value = "/most_prolific", method = RequestMethod.GET)
     public ResponseEntity<?> mostProlific(){
         List<Artist> res = artistService.findMostProlific();
-        return new ResponseEntity<>(res, HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Security-Policy", "upgrade-insecure-requests");
+        return new ResponseEntity<>(res, headers, HttpStatus.OK);
     }
 
 

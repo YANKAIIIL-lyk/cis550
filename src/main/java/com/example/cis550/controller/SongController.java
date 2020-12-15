@@ -7,6 +7,7 @@ import com.example.cis550.model.TopGenre;
 import com.example.cis550.service.SongService;
 import org.apache.tomcat.util.http.parser.HttpParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,9 @@ public class SongController {
             @RequestParam(value = "startYear") String startYear,
             @RequestParam(value = "endYear") String endYear) {
         List<Song> res = songService.findRange(startYear, endYear);
-        return new ResponseEntity<>(res, HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Security-Policy", "upgrade-insecure-requests");
+        return new ResponseEntity<>(res, headers, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/top_genre", method = RequestMethod.GET)
@@ -41,7 +44,9 @@ public class SongController {
             @RequestParam(value = "orderby", required = false) boolean sort
     ){
         List<TopGenre> topgenres = songService.findTopGenre(year, genre, sort);
-        return new ResponseEntity<>(topgenres, HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Security-Policy", "upgrade-insecure-requests");
+        return new ResponseEntity<>(topgenres, headers, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/hidden_gem", method = RequestMethod.GET)
@@ -49,7 +54,9 @@ public class SongController {
             @RequestParam(value = "startYear") String startYear,
             @RequestParam(value = "endYear") String endYear) {
         List<Song> res = songService.hidden(startYear, endYear);
-        return new ResponseEntity<>(res, HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Security-Policy", "upgrade-insecure-requests");
+        return new ResponseEntity<>(res, headers, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/spotify", method = RequestMethod.GET)
@@ -57,14 +64,18 @@ public class SongController {
             @RequestParam(value = "startYear") String start,
             @RequestParam(value = "endYear") String end){
         List<Song> res = songService.exclusive(start, end);
-        return new ResponseEntity<>(res, HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Security-Policy", "upgrade-insecure-requests");
+        return new ResponseEntity<>(res, headers, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/recommendation", method = RequestMethod.GET)
     public ResponseEntity<?> recommend(
             @RequestParam(value = "genre") String genre){
         List<RecommendView> res = songService.recommend(genre);
-        return new ResponseEntity<>(res, HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Security-Policy", "upgrade-insecure-requests");
+        return new ResponseEntity<>(res, headers,HttpStatus.OK);
     }
 
 }
